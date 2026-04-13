@@ -10,6 +10,7 @@ use App\Http\Requests\DealerLocation\UpdateDealerLocationRequest;
 use App\Models\DealerLocation;
 use App\Models\User;
 use App\Services\DealerLocationService;
+use App\UserType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -28,7 +29,11 @@ class DealerLocationController extends Controller
 
     public function create(): View
     {
-        return view('dealers.create');
+        $dealers = User::where('user_type', UserType::DEALER)
+            ->whereDoesntHave('dealerLocation')
+            ->get();
+
+        return view('dealers.create', compact('dealers'));
     }
 
     public function store(StoreDealerLocationRequest $request): RedirectResponse

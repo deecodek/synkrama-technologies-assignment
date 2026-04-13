@@ -17,6 +17,11 @@
                         <div class="mt-2">
                             <select id="user_id" name="user_id" required class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 <option value="">Select a dealer</option>
+                                @foreach($dealers as $dealer)
+                                    <option value="{{ $dealer->id }}" {{ old('user_id') == $dealer->id ? 'selected' : '' }}>
+                                        {{ $dealer->first_name }} {{ $dealer->last_name }} ({{ $dealer->email }})
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
