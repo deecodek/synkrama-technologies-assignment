@@ -33,20 +33,4 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-
-    public function employee(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'user_type' => UserType::EMPLOYEE,
-            'first_login_completed' => true,
-        ]);
-    }
-
-    public function dealer(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'user_type' => UserType::DEALER,
-            'first_login_completed' => false,
-        ]);
-    }
 }
