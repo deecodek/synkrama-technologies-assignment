@@ -20,7 +20,6 @@ class StoreDealerLocationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'exists:users,id'],
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
